@@ -13,7 +13,7 @@ const io = new Server(server, {
         origin: '*',
         methods: ['GET', 'POST'],
     },
-    transports: ["websocket","polling"]
+    transports: ["websocket"]
 });
 
 io.on('connection',(socket)=>{
@@ -28,6 +28,10 @@ io.on('connection',(socket)=>{
         const {id, message} = data;
         console.log(data)
         io.to(id).emit("receive personal msg",({message,id: socket.id}))
+    })
+
+    socket.on("disconnect",(msg)=>{
+        console.log("disconnected: ",msg)
     })
 })
 
