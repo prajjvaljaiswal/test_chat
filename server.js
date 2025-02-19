@@ -13,6 +13,7 @@ const io = new Server(server, {
         origin: '*',
         methods: ['GET', 'POST'],
     },
+    transports: ["websocket","polling"]
 });
 
 io.on('connection',(socket)=>{
