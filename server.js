@@ -15,7 +15,9 @@ const io = require("socket.io")(server, {
         allowedHeaders:["Content-Type"],
         credential: true,
     },
-    transports: ["websocket","polling"]
+    transports: ["websocket","polling"],
+    pingIntervel: 30000,
+    pingTimeout: 25000
 });
 
 io.on('connection',(socket)=>{
