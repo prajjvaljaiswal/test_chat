@@ -1,5 +1,5 @@
 const express = require("express")
-const {Server} = require("socket.io")
+// const {Server} = require("socket.io")
 const http = require("http")
 const cors = require("cors")
 
@@ -8,12 +8,12 @@ app.use(cors())
 app.use(express.json())
 
 const server = http.createServer(app)
-const io = new Server(server, {
+const io = require("socket.io")(server, {
     cors: {
         origin: '*',
         methods: ['GET', 'POST'],
     },
-    transports: ["websocket"]
+    transports: ["websocket","polling"]
 });
 
 io.on('connection',(socket)=>{
