@@ -10,14 +10,8 @@ app.use(express.json())
 const server = http.createServer(app)
 const io = require("socket.io")(server, {
     cors: {
-        origin: '*',
-        methods: ['GET', 'POST'],
-        allowedHeaders:["Content-Type"],
-        credential: true,
-    },
-    transports: ["websocket","polling"],
-    pingIntervel: 30000,
-    pingTimeout: 25000
+        origin: '*'
+    }
 });
 
 io.on('connection',(socket)=>{
