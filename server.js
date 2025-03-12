@@ -14,7 +14,9 @@ app.use(express.json())
 const server = http.createServer(app)
 const io = socket(server, {
     cors: {
-        origin: '*'
+        origin: '*',
+        methods: ["GET", "POST"],
+        credentials: true
     }
 });
 
