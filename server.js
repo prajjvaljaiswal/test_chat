@@ -11,6 +11,7 @@ app.use(cors({
 app.use(express.json())
 
 app.get("/test",(req,res)=>{
+    console.log("test")
     res.send("hello world")
 })
 
@@ -25,10 +26,11 @@ const io = new Server(server, {
 });
 
 io.on('connection',(socket)=>{
+
     console.log("User Connected: ",socket.id)
 
     socket.on("send all", (data)=>{
-        console.log(data)
+        console.log(data, "send all")
         io.emit("reveive all", data)
     })
     
