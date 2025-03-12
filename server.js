@@ -10,6 +10,10 @@ app.use(cors({
 }))
 app.use(express.json())
 
+app.get("/test",(req,res)=>{
+    res.send("hello world")
+})
+
 
 const server = http.createServer(app)
 const io = socket(server, {
