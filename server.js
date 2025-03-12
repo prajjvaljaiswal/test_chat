@@ -34,6 +34,10 @@ io.on('connection',(socket)=>{
         io.emit("reveive all", data)
     })
     
+    socket.onAny((event, ...args) => {
+        console.log(`📩 Event received: ${event}`, args);
+    });
+    
     socket.on("send personal msg",(data)=>{
         const {id, message} = data;
         console.log(data)
