@@ -16,32 +16,32 @@ app.get("/test",(req,res)=>{
 
 
 const server = http.createServer(app)
-const io = socket(server, {
-    cors: {
-        origin: '*',
-        methods: ["GET", "POST"],
-        credentials: true
-    }
-});
+// const io = socket(server, {
+//     cors: {
+//         origin: '*',
+//         methods: ["GET", "POST"],
+//         credentials: true
+//     }
+// });
 
-io.on('connection',(socket)=>{
-    console.log("User Connected: ",socket.id)
+// io.on('connection',(socket)=>{
+//     console.log("User Connected: ",socket.id)
 
-    socket.on("send all", (data)=>{
-        console.log(data)
-        io.emit("reveive all", data)
-    })
+//     socket.on("send all", (data)=>{
+//         console.log(data)
+//         io.emit("reveive all", data)
+//     })
     
-    socket.on("send personal msg",(data)=>{
-        const {id, message} = data;
-        console.log(data)
-        io.to(id).emit("receive personal msg",({message,id: socket.id}))
-    })
+//     socket.on("send personal msg",(data)=>{
+//         const {id, message} = data;
+//         console.log(data)
+//         io.to(id).emit("receive personal msg",({message,id: socket.id}))
+//     })
 
-    socket.on("disconnect",(msg)=>{
-        console.log("disconnected: ",msg)
-    })
-})
+//     socket.on("disconnect",(msg)=>{
+//         console.log("disconnected: ",msg)
+//     })
+// })
 
 
 
